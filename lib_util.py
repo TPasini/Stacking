@@ -17,7 +17,7 @@ else:
 import matplotlib as mpl
 mpl.use("Agg")
 
-from LiLF.lib_log import logger
+from lib_log import logger
 
 def getParset(parsetFile='../lilf.config'):
     """
