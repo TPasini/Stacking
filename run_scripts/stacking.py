@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 from matplotlib import colors
 import numpy as np
 from scipy.ndimage.filters import minimum_filter, maximum_filter
-import lib_coordinates_mode as cm
-from lib_fits import flatten
-import lib_fits
+import lib.lib_coordinates_mode as cm
+from lib.lib_fits import flatten
+import lib.lib_fits
 from astropy import wcs as pywcs
 from astropy.cosmology import FlatLambdaCDM
 from astropy.table import Table
@@ -16,8 +16,8 @@ from astropy import units as u
 from astropy.nddata import Cutout2D
 from astropy import constants as const
 import astropy.io.fits as aif
-import lib_radio as radiolib
-import scipy_modified as scimod
+import lib.lib_radio as radiolib
+import lib.scipy_modified as scimod
 import astropy.wcs.utils as astrowcs
 
 cosmo = FlatLambdaCDM(H0=70, Om0=0.3)
