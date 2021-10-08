@@ -22,7 +22,7 @@ import os, sys, logging, re
 import numpy as np
 from astropy.io import fits
 import pyregion
-from lib_fits import Image
+from lib.lib_fits import Image
 
 class RadioImage(Image):
 
