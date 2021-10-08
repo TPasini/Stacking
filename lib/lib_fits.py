@@ -550,7 +550,7 @@ class Image(object):
         Convolve *to* this rsolution
         beam = [bmaj, bmin, bpa]
         """
-        from lib_beamdeconv import deconvolve_ell, EllipticalGaussian2DKernel
+        from lib.lib_beamdeconv import deconvolve_ell, EllipticalGaussian2DKernel
         from astropy import convolution
 
         # if difference between beam is negligible <1%, skip - it mostly happens when beams are exactly the same
