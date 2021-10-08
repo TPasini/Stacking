@@ -18,7 +18,7 @@ import os, sys, shutil
 from astropy.table import Table
 from lib import lib_fits as libfits
 import glob
-import lib_util, lib_log
+import lib.lib_util, lib.lib_log
 
 
 def print_title():
