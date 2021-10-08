@@ -20,7 +20,7 @@ import lib_radio as radiolib
 import scipy_modified as scimod
 import astropy.wcs.utils as astrowcs
 
-cosmo = FlatLambdaCDM(H0=70, Om0=0.3)
+cosmo = FlatLambdaCDM(H0=70, Om0=0.3)]
 
 do_plot = True # True to save a plot for each source
 
