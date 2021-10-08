@@ -4,6 +4,25 @@ from lib import lib_fits as libfits
 import glob
 import lib_util, lib_log
 
+
+def print_title():
+    print("""
+
+          _____   _                    _      _
+         / ____| | |                  | |    (_)
+        | (___   | |_    __ _    ___  | | __  _   _ __     __ _
+         \___ \  | __|  / _` |  / __| | |/ / | | | '_ \   / _` |
+         ____) | | |_  | (_| | | (__  |   <  | | | | | | | (_| |
+        |_____/   \__|  \__,_|  \___| |_|\_\ |_| |_| |_|  \__, |
+                                                           __/ |
+                                                          |___/
+
+      """)
+
+    return
+
+print_title()
+
 logger_obj = lib_log.Logger('pipeline-stacking.logger')
 logger = lib_log.logger
 s = lib_util.Scheduler(log_dir=logger_obj.log_dir, dry = False)
@@ -14,9 +33,8 @@ w = lib_util.Walker('pipeline-stacking.walker')
 #import injection#: INJECT MOCK HALOS IN GIVEN POSITION
 
 with w.if_todo('FITSgen'):
-    logger.info('FITSgen...')
+    logger.info('Generation of table fits file...')
     print('')
-    print('Creating fits table..')
     import run_scripts.createfits #: CREATE A TABLE WITH THEIR PROPERTIES AND IMAGES NAMES
 
 file_cat = 'LISTstacking.fits'
@@ -25,33 +43,14 @@ cat = Table.read(file_cat)
 image = cat['Imagename']
 
 with w.if_todo('Smoothing'):
-    logger.info('Smoothing...')
-    print('Smoothing images to common beam..')
+    logger.info('Smoothing images to common beam...')
     objectlist = libfits.AllImages(image)
     objectlist.convolve_to(circbeam=True)
     objectlist.write(suffix='smooth', inflate=True)
 
-print('AAAAAAAA')
 with w.if_todo('Stacking'):
-    logger.info('Stacking...')
-    print('Stacking images..')
+    logger.info('Stacking images...')
     print('')
-
-    def print_title():
-        print("""
-    
-              _____   _                    _      _
-             / ____| | |                  | |    (_)
-            | (___   | |_    __ _    ___  | | __  _   _ __     __ _
-             \___ \  | __|  / _` |  / __| | |/ / | | | '_ \   / _` |
-             ____) | | |_  | (_| | | (__  |   <  | | | | | | | (_| |
-            |_____/   \__|  \__,_|  \___| |_|\_\ |_| |_| |_|  \__, |
-                                                               __/ |
-                                                              |___/
-    
-          """)
-
-        return
 
     import run_scripts.stacking #: STACK IMAGES OF MOCK HALOS AND PROVIDE PLOTS AND IMAGES OF RESULTS
 
