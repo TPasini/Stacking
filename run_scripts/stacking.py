@@ -49,11 +49,6 @@ print('The minimum redshift is', min_z)
 print('The maximum redshift is', max_z)
 print('The mean redshift is', "%.2f" % mean_z)
 
-#Circular filter ONLY IF IMAGE HAS TO BE FILTERED (NO RESID)
-#footprint = np.zeros((20,20)) # 5 beams
-#y,x = np.ogrid[-10:10, -10:10]
-#footprint[ x**2+y**2 <= 10**2 ] = True
-
 class Source(object):
 
     def __init__(self, c):
@@ -72,8 +67,7 @@ class Source(object):
         
         
         data_cut = Cutout2D(data_surv, coord_source, size=[size,size], wcs=w, mode='partial', fill_value=np.nan)
-        
-        #header_surv['CRVAL1'] = header_surv['CRVAL1'] +
+
         header_surv['CRPIX1'] = size/2
         header_surv['CRPIX2'] = size/2
         
@@ -82,8 +76,8 @@ class Source(object):
         del data_surv
         print("Resize", data_cut.shape[0], "-> ", size_in_pixel, 'pixel')
         
-        #return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bilinear')
-        return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bicubic') #Here I resize every image so that they have the same dimensions in pixel
+        return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bilinear')
+        #return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bicubic') #Here I resize every image so that they have the same dimensions in pixel
         #return data_cut.data
 
     def calc_flux(self, data):
