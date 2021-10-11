@@ -84,7 +84,8 @@ class Source(object):
         prova = scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='cubic')
         header_surv['CRPIX1'] = size_in_pixel / 2
         header_surv['CRPIX2'] = size_in_pixel / 2
-        header_surv['CDELT2'] = beamspacing.value*(size/size_in_pixel)
+        header_surv['CDELT2'] = beamspacing.value * (size / size_in_pixel)
+        header_surv['CDELT1'] = beamspacing.value * (size / size_in_pixel)
         aif.writeto('Regridded/' + imagetouse + '-regrid.fits', prova, header=header_surv)
 
         return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bilinear')
