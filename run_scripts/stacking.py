@@ -70,7 +70,6 @@ class Source(object):
         w = pywcs.WCS(header_surv)
         coord_source = SkyCoord((self.c['RAinj']*u.deg).astype(np.float64), (self.c['DECinj']*u.deg).astype(np.float64), frame='fk5')
         
-        
         data_cut = Cutout2D(data_surv, coord_source, size=[size,size], wcs=w, mode='partial', fill_value=np.nan)
 
         header_surv['CRPIX1'] = size/2
@@ -79,9 +78,9 @@ class Source(object):
         aif.writeto('Cut_images/'+imagetouse+'-cut.fits', data_cut.data, header = header_surv)
 
         del data_surv
-        print("Resize", data_cut.shape[0], "-> ", size_in_pixel, 'pixel')
+        print("Regrid", data_cut.shape[0], "-> ", size_in_pixel, 'pixel')
 
-        prova = scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='cubic')
+        prova = scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bilinear')
         header_surv['CRPIX1'] = size_in_pixel / 2
         header_surv['CRPIX2'] = size_in_pixel / 2
         header_surv['CDELT2'] = beamspacing.value * (size / size_in_pixel)
@@ -294,10 +293,12 @@ class Source_group(object):
         
         header_orig['CRPIX1'] = size_in_pixel/2
         header_orig['CRPIX2'] = size_in_pixel/2
-        header_orig['CDELT2'] = beamspacing.value * (size / size_in_pixel)
-        header_orig['CDELT1'] = - beamspacing.value * (size / size_in_pixel)
+        #header_orig['CDELT2'] = beamspacing.value * (size / size_in_pixel)
+        #header_orig['CDELT1'] = - beamspacing.value * (size / size_in_pixel)
+
+
         
-        aif.writeto('Stacking_plots/stack.fits', img_stack_orig, header=header_orig)
+        aif.writeto('Stacking_plots/stack.fits', img_stack_orig*3.6, header=header_orig)
 
         ##FLUXES
         ax2 = fig2.add_subplot(111)
