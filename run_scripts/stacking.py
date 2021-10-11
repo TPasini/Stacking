@@ -62,7 +62,7 @@ class Source(object):
         self.data_regrid = None
         self.data_open = None
     
-    def reproject(self, file_surv, size):
+    def reproject(self, file_surv, size, beamspacing):
         """
         create data_regrid from data_surv
         """
@@ -84,6 +84,7 @@ class Source(object):
         prova = scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='cubic')
         header_surv['CRPIX1'] = size_in_pixel / 2
         header_surv['CRPIX2'] = size_in_pixel / 2
+        header_surv['CDELT2'] = beamspacing*(size/size_in_pixel)
         aif.writeto('Regridded/' + imagetouse + '-regrid.fits', prova, header=header_surv)
 
         return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bilinear')
@@ -423,7 +424,7 @@ for i, c in enumerate(cat):
     
     size = 400
 
-    source.data_regrid = source.reproject(source.file_surv, size)
+    source.data_regrid = source.reproject(source.file_surv, size, beamspacing/60)
     #header_orig = hdul[0].header
     
     if source.data_regrid is None:
