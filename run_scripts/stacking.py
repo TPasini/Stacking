@@ -293,8 +293,7 @@ class Source_group(object):
         header_orig['CRPIX1'] = size_in_pixel/2
         header_orig['CRPIX2'] = size_in_pixel/2
         
-        #aif.writeto('Stacking_plots/stack.fits', img_stack_orig*((size/size_in_pixel)**2), header=header_orig)
-        aif.writeto('Stacking_plots/stack.fits', img_stack_orig, header=header_orig)
+        aif.writeto('Stacking_plots/stack.fits', img_stack_orig*((size/size_in_pixel)**2), header=header_orig)
 
         ##FLUXES
         ax2 = fig2.add_subplot(111)
@@ -424,7 +423,7 @@ for i, c in enumerate(cat):
     
     size = 400
 
-    source.data_regrid = source.reproject(source.file_surv, size) * ((size / size_in_pixel) ** 2)
+    source.data_regrid = source.reproject(source.file_surv, size)
     #header_orig = hdul[0].header
     
     if source.data_regrid is None:
