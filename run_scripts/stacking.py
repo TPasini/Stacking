@@ -390,8 +390,8 @@ for i, c in enumerate(cat):
     print('###################')
     print('')
 
-    my_file = Path("/Smoothed/"+imagetouse)
-    if my_file.is_dir("/Smoothed"):
+    my_file = Path("/Smoothed")
+    if my_file.is_dir():
         hdul = aif.open("/Smoothed/"+imagetouse)
     else:
         hdul = aif.open(imagetouse)
