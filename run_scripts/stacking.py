@@ -86,7 +86,7 @@ class Source(object):
         # header_surv['CRPIX2'] = size_in_pixel / 2
         # aif.writeto('Regridded/' + imagetouse + '-regrid.fits', prova, header=header_surv)
 
-        return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bilinear')
+        return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='cubic')
 
     def calc_flux(self, data):
         """
