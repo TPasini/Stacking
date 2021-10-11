@@ -40,9 +40,9 @@ def print_title():
 
 print_title()
 
-#logger_obj = lib_log.Logger('pipeline-stacking.logger')
-#logger = lib_log.logger
-#s = lib_util.Scheduler(log_dir=logger_obj.log_dir, dry = False)
+logger_obj = lib_log.Logger('pipeline-stacking.logger')
+logger = lib_log.logger
+s = lib_util.Scheduler(log_dir=logger_obj.log_dir, dry = False)
 w = lib_util.Walker('pipeline-stacking.walker')
 
 #INPUT: DATASET OF GALAXY CLUSTERS/GROUPS
