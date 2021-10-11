@@ -282,7 +282,7 @@ class Source_group(object):
         # ax1.add_artist(circle2)
         ax1.tick_params(labelsize=17)
         norm = colors.SymLogNorm(linthresh=0.00003, vmin=-0.00016, vmax=0.0025)
-        im = ax1.imshow(img_stack_orig*((size/size_in_pixel)**2), extent=(-size_in_pixel, size_in_pixel, -size_in_pixel, size_in_pixel), norm=norm, origin='lower', cmap='viridis')
+        im = ax1.imshow(img_stack_orig, extent=(-size_in_pixel, size_in_pixel, -size_in_pixel, size_in_pixel), norm=norm, origin='lower', cmap='viridis')
         cbar = fig.colorbar(im)
         cbar.set_label('Jy/beam', size=16)
         cbar.ax.tick_params(labelsize=14)
@@ -295,7 +295,7 @@ class Source_group(object):
         header_orig['CRPIX1'] = size_in_pixel/2
         header_orig['CRPIX2'] = size_in_pixel/2
         
-        aif.writeto('Stacking_plots/stack.fits', img_stack_orig*((size/size_in_pixel)**2), header=header_orig)
+        aif.writeto('Stacking_plots/stack.fits', img_stack_orig, header=header_orig)
 
         ##FLUXES
         ax2 = fig2.add_subplot(111)
