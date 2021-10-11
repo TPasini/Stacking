@@ -388,13 +388,15 @@ for i, c in enumerate(cat):
     print('###################')
     print('')
 
-    my_file = Path("Smoothed")
-    if my_file.is_dir():
-        source.file_surv = os.path.basename("Smoothed/"+imagetouse)
-        hdul = aif.open("Smoothed/"+imagetouse)
-    else:
-        source.file_surv = os.path.basename(imagetouse)
-        hdul = aif.open(imagetouse)
+    # my_file = Path("Smoothed")
+    # if my_file.is_dir():
+    #     source.file_surv = os.path.basename("Smoothed/"+imagetouse)
+    #     hdul = aif.open("Smoothed/"+imagetouse)
+    # else:
+    #     source.file_surv = os.path.basename(imagetouse)
+    #     hdul = aif.open(imagetouse)
+    source.file_surv = os.path.basename(imagetouse)
+    hdul = aif.open(imagetouse)
     print('Image:', imagetouse)
 
     beamspacing = ((hdul[0].header['CDELT2'])*60)*u.arcmin
