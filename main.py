@@ -40,9 +40,9 @@ def print_title():
 
 print_title()
 
-logger_obj = lib_log.Logger('pipeline-stacking.logger')
-logger = lib_log.logger
-s = lib_util.Scheduler(log_dir=logger_obj.log_dir, dry = False)
+#logger_obj = lib_log.Logger('pipeline-stacking.logger')
+#logger = lib_log.logger
+#s = lib_util.Scheduler(log_dir=logger_obj.log_dir, dry = False)
 w = lib_util.Walker('pipeline-stacking.walker')
 
 #INPUT: DATASET OF GALAXY CLUSTERS/GROUPS
@@ -52,7 +52,8 @@ w = lib_util.Walker('pipeline-stacking.walker')
 with w.if_todo('FITSgen'):
     logger.info('Generation of table fits file...')
     print('')
-    import run_scripts.createfits #: CREATE A TABLE WITH THEIR PROPERTIES AND IMAGES NAMES
+    import run_scripts.createfits
+    #: CREATES A TABLE WITH IMAGES NAMES AND PROPERTIES
 
 file_cat = 'LISTstacking.fits'
 
@@ -64,7 +65,8 @@ with w.if_todo('Stacking'):
     objectlist = libfits.AllImages(image)
     objectlist.convolve_to(circbeam=True)
     objectlist.write(suffix='smooth', inflate=True)
-    import run_scripts.stacking #: STACK IMAGES OF MOCK HALOS AND PROVIDE PLOTS AND IMAGES OF RESULTS
+    import run_scripts.stacking
+    #: STACKS IMAGES OF MOCK HALOS AND PROVIDES PLOTS AND IMAGES OF RESULTS
 
 if os.path.exists('Smoothed'):
     shutil.rmtree('Smoothed')

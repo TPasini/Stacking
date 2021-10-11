@@ -408,8 +408,7 @@ for i, c in enumerate(cat):
 
     if not os.path.exists('Stacking_plots'):
         os.makedirs('Stacking_plots')
-        
-    
+
 #    #Flux mask
     mask_flux1mpc = np.zeros((size_in_pixel,size_in_pixel), dtype=bool)
     y,x = np.ogrid[-size_in_pixel/2:size_in_pixel/2, -size_in_pixel/2:size_in_pixel/2]
