@@ -375,7 +375,12 @@ sources = Source_group()
 
 for i, c in enumerate(cat):
 
-    imagetouse = "Smoothed/"+c['Imagename-smooth']
+    my_file = Path("Smoothed")
+    if my_file.is_dir():
+        imagetouse = "Smoothed/"+c['Imagename-smooth']
+    else:
+        imagetouse = c['Imagename-smooth']
+
     z = c['z']
     ra = c['RAinj']
     dec = c['DECinj']
@@ -388,13 +393,6 @@ for i, c in enumerate(cat):
     print('###################')
     print('')
 
-    # my_file = Path("Smoothed")
-    # if my_file.is_dir():
-    #     source.file_surv = os.path.basename("Smoothed/"+imagetouse)
-    #     hdul = aif.open("Smoothed/"+imagetouse)
-    # else:
-    #     source.file_surv = os.path.basename(imagetouse)
-    #     hdul = aif.open(imagetouse)
     source.file_surv = os.path.basename(imagetouse)
     hdul = aif.open(imagetouse)
     print('Image:', imagetouse)
