@@ -86,7 +86,7 @@ class Source(object):
         # header_surv['CRPIX2'] = size_in_pixel / 2
         # aif.writeto('Regridded/' + imagetouse + '-regrid.fits', prova, header=header_surv)
 
-        return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='lanczos')
+        return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bilinear')
 
     def calc_flux(self, data):
         """
@@ -392,7 +392,6 @@ for i, c in enumerate(cat):
     if my_file.is_dir():
         source.file_surv = os.path.basename("Smoothed/"+imagetouse)
         hdul = aif.open("Smoothed/"+imagetouse)
-        print('AAAAAAAA')
     else:
         source.file_surv = os.path.basename(imagetouse)
         hdul = aif.open(imagetouse)
