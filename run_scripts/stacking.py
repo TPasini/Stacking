@@ -388,8 +388,12 @@ for i, c in enumerate(cat):
     print('##### IMAGE', i+1, '#####')
     print('###################')
     print('')
-    
-    hdul = aif.open(imagetouse)
+
+    my_file = Path("/Smoothed/"+imagetouse)
+    if my_file.is_dir("/Smoothed"):
+        hdul = aif.open("/Smoothed/"+imagetouse)
+    else:
+        hdul = aif.open(imagetouse)
     print('Image:', imagetouse)
     beamspacing = ((hdul[0].header['CDELT2'])*60)*u.arcmin
     radiores = ((hdul[0].header['BMAJ'])*3600)*u.arcsec
