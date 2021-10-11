@@ -375,12 +375,7 @@ sources = Source_group()
 
 for i, c in enumerate(cat):
 
-    my_file = Path("Smoothed")
-    if my_file.is_dir():
-        imagetouse = "Smoothed/"+c['Imagename-smooth']
-    else:
-        imagetouse = c['Imagename-smooth']
-
+    imagetouse = c['Imagename-smooth']
     z = c['z']
     ra = c['RAinj']
     dec = c['DECinj']

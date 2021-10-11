@@ -59,16 +59,11 @@ file_cat = 'LISTstacking.fits'
 cat = Table.read(file_cat)
 image = cat['Imagename']
 
-with w.if_todo('Smoothing'):
-    logger.info('Smoothing images to common beam...')
+with w.if_todo('Stacking'):
+    logger.info('Smoothing images to common beam and stacking...')
     objectlist = libfits.AllImages(image)
     objectlist.convolve_to(circbeam=True)
     objectlist.write(suffix='smooth', inflate=True)
-
-with w.if_todo('Stacking'):
-    logger.info('Stacking images...')
-    print('')
-
     import run_scripts.stacking #: STACK IMAGES OF MOCK HALOS AND PROVIDE PLOTS AND IMAGES OF RESULTS
 
 if os.path.exists('Smoothed'):
