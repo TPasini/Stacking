@@ -381,8 +381,6 @@ for i, c in enumerate(cat):
     dec = c['DECinj']
     
     source = Source(c)
-
-    source.file_surv = os.path.basename(imagetouse)
     
     print('')
     print('###################')
@@ -392,10 +390,13 @@ for i, c in enumerate(cat):
 
     my_file = Path("Smoothed")
     if my_file.is_dir():
+        source.file_surv = os.path.basename("Smoothed/"+imagetouse)
         hdul = aif.open("Smoothed/"+imagetouse)
     else:
+        source.file_surv = os.path.basename(imagetouse)
         hdul = aif.open(imagetouse)
     print('Image:', imagetouse)
+
     beamspacing = ((hdul[0].header['CDELT2'])*60)*u.arcmin
     radiores = ((hdul[0].header['BMAJ'])*3600)*u.arcsec
     resmin = ((hdul[0].header['BMIN'])*3600)*u.arcsec
