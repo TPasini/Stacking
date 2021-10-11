@@ -375,7 +375,7 @@ sources = Source_group()
 
 for i, c in enumerate(cat):
 
-    imagetouse = c['Imagename-smooth']
+    imagetouse = "Smoothed/"+c['Imagename-smooth']
     z = c['z']
     ra = c['RAinj']
     dec = c['DECinj']
