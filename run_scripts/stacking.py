@@ -392,6 +392,7 @@ for i, c in enumerate(cat):
     if my_file.is_dir():
         source.file_surv = os.path.basename("Smoothed/"+imagetouse)
         hdul = aif.open("Smoothed/"+imagetouse)
+        print('AAAAAAAA')
     else:
         source.file_surv = os.path.basename(imagetouse)
         hdul = aif.open(imagetouse)
