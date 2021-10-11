@@ -293,12 +293,12 @@ class Source_group(object):
         
         header_orig['CRPIX1'] = size_in_pixel/2
         header_orig['CRPIX2'] = size_in_pixel/2
-        #header_orig['CDELT2'] = beamspacing.value * (size / size_in_pixel)
-        #header_orig['CDELT1'] = - beamspacing.value * (size / size_in_pixel)
+        header_orig['CDELT2'] = beamspacing.value * (size / size_in_pixel)
+        header_orig['CDELT1'] = - beamspacing.value * (size / size_in_pixel)
 
 
         
-        aif.writeto('Stacking_plots/stack.fits', img_stack_orig*3.6, header=header_orig)
+        aif.writeto('Stacking_plots/stack.fits', img_stack_orig, header=header_orig)
 
         ##FLUXES
         ax2 = fig2.add_subplot(111)
