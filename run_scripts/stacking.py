@@ -31,6 +31,10 @@ if os.path.exists('Cut_images'):
     shutil.rmtree('Cut_images')
 os.mkdir('Cut_images')
 
+if os.path.exists('Regridded'):
+    shutil.rmtree('Regridded')
+os.mkdir('Regridded')
+
 file_cat = 'LISTstacking.fits'
 
 cat = Table.read(file_cat)
