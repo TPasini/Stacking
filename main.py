@@ -12,7 +12,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# Credits for all libraries to F. de Gasperin and H. W. Edler
+# Credits for all libraries go to F. de Gasperin and H. W. Edler
 
 import os, sys, shutil
 from astropy.table import Table
