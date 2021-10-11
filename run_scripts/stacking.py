@@ -80,14 +80,12 @@ class Source(object):
         del data_surv
         print("Resize", data_cut.shape[0], "-> ", size_in_pixel, 'pixel')
 
-        prova = scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bilinear')
-        header_surv['CRPIX1'] = size_in_pixel / 2
-        header_surv['CRPIX2'] = size_in_pixel / 2
-        aif.writeto('Regridded/' + imagetouse + '-regrid.fits', prova, header=header_surv)
+        # prova = scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bilinear')
+        # header_surv['CRPIX1'] = size_in_pixel / 2
+        # header_surv['CRPIX2'] = size_in_pixel / 2
+        # aif.writeto('Regridded/' + imagetouse + '-regrid.fits', prova, header=header_surv)
 
-        return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bilinear')
-        #return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='bicubic') #Here I resize every image so that they have the same dimensions in pixel
-        #return data_cut.data
+        return scimod.imresize(data_cut.data, (size_in_pixel,size_in_pixel), mode='F', interp='lanczos')
 
     def calc_flux(self, data):
         """
