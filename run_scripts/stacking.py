@@ -405,7 +405,6 @@ for i, c in enumerate(cat):
     sizemean = 2000*u.kpc/cosmo.kpc_proper_per_arcmin(mean_z)
     size_in_pixel_withunit = (sizemean/beamspacing)*u.pixel #pixel for 2 Mpc
     size_in_pixel = int(size_in_pixel_withunit.value)
-    print(mean_z, size_in_pixel)
 
     if not os.path.exists('Stacking_plots'):
         os.makedirs('Stacking_plots')
@@ -424,7 +423,7 @@ for i, c in enumerate(cat):
     
     fig = plt.figure(figsize=(18,6))
     
-    size = 400
+    size = 800
 
     source.data_regrid = source.reproject(source.file_surv, size, beamspacing/60)
     #header_orig = hdul[0].header
