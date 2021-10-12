@@ -63,7 +63,7 @@ image = cat['Imagename']
 with w.if_todo('Stacking'):
     logger.info('Smoothing images to common beam and stacking...')
     objectlist = libfits.AllImages(image)
-    objectlist.convolve_to(circbeam=True)
+    objectlist.convolve_to(circbeam=False)
     objectlist.write(suffix='smooth', inflate=True)
     import run_scripts.stacking
     #: STACKS IMAGES OF MOCK HALOS AND PROVIDES PLOTS AND IMAGES OF RESULTS
