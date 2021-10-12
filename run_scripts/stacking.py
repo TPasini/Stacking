@@ -423,7 +423,7 @@ for i, c in enumerate(cat):
     
     fig = plt.figure(figsize=(18,6))
     
-    size = 800
+    size = 600
 
     source.data_regrid = source.reproject(source.file_surv, size, beamspacing/60)
     #header_orig = hdul[0].header
