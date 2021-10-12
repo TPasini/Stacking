@@ -405,6 +405,7 @@ for i, c in enumerate(cat):
     sizemean = 2000*u.kpc/cosmo.kpc_proper_per_arcmin(mean_z)
     size_in_pixel_withunit = (sizemean/beamspacing)*u.pixel #pixel for 2 Mpc
     size_in_pixel = int(size_in_pixel_withunit.value)
+    print(mean_z, size_in_pixel)
 
     if not os.path.exists('Stacking_plots'):
         os.makedirs('Stacking_plots')
