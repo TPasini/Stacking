@@ -559,6 +559,7 @@ class Image(object):
             logging.debug('%s: do not convolve. Same beam.' % self.imagefile)
             return
         # first find beam to convolve with
+        print(target_beam[0], target_beam[1], target_beam[2], beam[0], beam[1], beam[2])
         convolve_beam = deconvolve_ell(target_beam[0], target_beam[1], target_beam[2], beam[0], beam[1], beam[2])
         if convolve_beam[0] is None:
             logging.error('Cannot deconvolve this beam.')
