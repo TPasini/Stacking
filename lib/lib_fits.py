@@ -212,7 +212,7 @@ class AllImages():
             return all_beams[0]
 
         if circbeam:
-            maxmaj = np.max([image.get_beam()[0] for image in self.images])
+            maxmaj = 1.01*np.max([image.get_beam()[0] for image in self.images])
             target_beam = [maxmaj, maxmaj, 0.]  # add 1% to prevent crash in convolution
             #target_beam = [maxmaj * 1.01, maxmaj * 1.01, 0.]  # add 1% to prevent crash in convolution
         else:
