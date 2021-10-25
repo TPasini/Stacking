@@ -45,8 +45,6 @@ logger = lib_log.logger
 s = lib_util.Scheduler(log_dir=logger_obj.log_dir, dry = False)
 w = lib_util.Walker('pipeline-stacking.walker')
 
-#INPUT: DATASET OF GALAXY CLUSTERS/GROUPS
-#import subtraction#: SUBTRACT COMPACT SOURCES AND CREATE NEW COLUMN
 #import injection#: INJECT MOCK HALOS IN GIVEN POSITION
 
 with w.if_todo('FITSgen'):

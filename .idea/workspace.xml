@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bfdaba94-c359-4346-b35b-08bb7f14f6f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -36,7 +38,9 @@
       <updated>1633688415987</updated>
       <workItem from="1634211936216" duration="354000" />
       <workItem from="1634221437930" duration="645000" />
-      <workItem from="1634720192513" duration="280000" />
+      <workItem from="1634720192513" duration="1285000" />
+      <workItem from="1634806737344" duration="721000" />
+      <workItem from="1634810952093" duration="503000" />
     </task>
     <servers />
   </component>
